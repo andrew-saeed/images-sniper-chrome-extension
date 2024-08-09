@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "image sniper",
+  "description": "snipe the images on the web page and download all of them as a zip file",
+  "version": "0.0.1",
+  "action": {
+    "default_title": "sniper mode",
+    "default_icon": "image_sniper_128.png"
+  },
+  "side_panel": {
+    "default_path": "sidePanel/index.html"
+  },
+  "permissions": ["scripting", "activeTab", "tabs", "storage", "sidePanel"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "main.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "image_sniper_16.png",
+    "32": "image_sniper_32.png",
+    "48": "image_sniper_48.png",
+    "128": "image_sniper_128.png"
+  }
+}
