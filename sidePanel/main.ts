@@ -1,3 +1,7 @@
-window.addEventListener('load', () => {
-    chrome.runtime.connect({name: "side-panel-toggle"})
-})
+import './style.scss'
+
+import { createApp } from 'vue'
+import App from './App.vue'
+
+const app = createApp(App)
+app.mount('#app')

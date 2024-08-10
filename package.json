@@ -1,7 +1,7 @@
 {
   "name": "image-sniper-chrome-ext",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.269",
+    "@vitejs/plugin-vue": "^5.1.2",
     "sass": "^1.77.8",
     "typescript": "^5.5.3",
     "vite": "^5.4.0"

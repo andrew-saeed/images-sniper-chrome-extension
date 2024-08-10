@@ -8,7 +8,30 @@ const CSS = `
         top: 0;
         left: 0;
         inset: 0;
-        z-index: 99999;
+        z-index: 999999;
+    }
+
+    .image-sniper-wrapper {
+        position: relative;
+        z-index: 9999999;
+        padding: 0.5rem;
+        border: 0.125rem solid white;
+        border-radius: 0.3125rem;
+    }
+
+    .image-sniper-btn {
+        position: absolute;
+        bottom: 0.5rem;
+        right: 0.5rem;
+        width: 3rem;
+        height: 3rem;
+        background-color: black;
+        border: 0.3125rem white solid;
+        border-radius: 3.125rem;
+        cursor: pointer;
+    }
+    .image-sniper-btn img {
+        border-radius: 3.125rem;
     }
 `
 
