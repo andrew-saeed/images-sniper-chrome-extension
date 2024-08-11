@@ -8,20 +8,18 @@
         const index = imageBoxes.value.findIndex(box => box.id === id)
         if (index !== -1) imageBoxes.value.splice(index, 1)
     }
+    const addImageBox = (src) => {
+        const id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`
+        imageBoxes.value.push({id, src})
+    }
 
     onMounted(() => {
         chrome.runtime.connect({name: "side-panel-toggle"})
-    })
 
-    chrome.runtime.onMessage.addListener(async (request, sender, reply) => {
+        chrome.runtime.onMessage.addListener(async (request, sender, reply) => {
         
-        if(request.action === "img_shoot") {
-
-            imageBoxes.value.push({
-                id: `${Date.now()}-${Math.floor(Math.random() * 1000)}`,
-                src: request.src
-            })
-        }
+            if(request.action === "img_shoot") addImageBox(request.src)
+        })
     })
 </script>
 <template>
@@ -32,11 +30,10 @@
 </template>
 <style lang="scss">
     ul {
-        padding: 0;
-        margin: 0;
         list-style: none;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(6.25rem, 1fr));
-        gap: 0.625rem;
+        gap: 3.125rem;
+        padding: 0;
+        margin: 0;
     }
 </style>
