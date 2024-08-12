@@ -23,17 +23,10 @@
     })
 </script>
 <template>
-    <h1>{{ imageBoxes.length ? `${imageBoxes.length} images` : 'Empty' }}</h1>
-    <ul>
-        <ImageBox @remove-image-box="removeImageBox" v-for="imageBox in imageBoxes" :imageBox="imageBox" :key="imageBox.id" />
-    </ul>
+    <div id="app-layout" class="p-2">
+        <h1 class="text-4xl text-white font-bold capitalize mb-3">{{ imageBoxes.length ? `${imageBoxes.length} images` : 'Empty' }}</h1>
+        <ul class="grid gap-[3.125rem]">
+            <ImageBox @remove-image-box="removeImageBox" v-for="imageBox in imageBoxes" :imageBox="imageBox" :key="imageBox.id" />
+        </ul>
+    </div>
 </template>
-<style lang="scss">
-    ul {
-        list-style: none;
-        display: grid;
-        gap: 3.125rem;
-        padding: 0;
-        margin: 0;
-    }
-</style>

@@ -11,11 +11,15 @@
   "devDependencies": {
     "@types/chrome": "^0.0.269",
     "@vitejs/plugin-vue": "^5.1.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
     "sass": "^1.77.8",
+    "tailwindcss": "^3.4.9",
     "typescript": "^5.5.3",
     "vite": "^5.4.0"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
     "cropperjs": "^1.6.2"
   }
 }
