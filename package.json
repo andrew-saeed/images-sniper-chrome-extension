@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.1.5",
-    "cropperjs": "^1.6.2"
+    "cropperjs": "^1.6.2",
+    "jszip": "^3.10.1"
   }
 }
