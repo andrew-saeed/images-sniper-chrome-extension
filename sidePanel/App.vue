@@ -6,23 +6,13 @@
     import ImageBox from './components/ImageBox.vue'
     import IconTextButton from './theme/IconTextButton.vue'
 
-    const imageBoxes = ref([])
-    const removeImageBox = (id) => {
-        const index = imageBoxes.value.findIndex(box => box.id === id)
-        if (index !== -1) imageBoxes.value.splice(index, 1)
-    }
-    const addImageBox = (src) => {
-        const id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`
-        imageBoxes.value.push({id, src})
-    }
-
-    const imgCroppers = ref([])
+    const imageCroppers = ref([])
     const addImageCropper = (imgCropper) => {
-        imgCroppers.value.push(imgCropper)
+        imageCroppers.value.push(imgCropper)
     }
     const downloadAllImages = async () => {
         const zip = new JSZip()
-        const imagesBlobs = imgCroppers.value.map(cropper => {
+        const imagesBlobs = imageCroppers.value.map(cropper => {
 
             return new Promise(resolve => {
 
@@ -45,6 +35,19 @@
         const writable = await saveFileHandle.createWritable()
         await writable.write(zipFile)
         await writable.close()
+    }
+
+    const imageBoxes = ref([])
+    const removeImageBox = (id) => {
+        const index = imageBoxes.value.findIndex(box => box.id === id)
+        if (index !== -1) {
+            imageBoxes.value.splice(index, 1)
+            imageCroppers.value.splice(index, 1)
+        }
+    }
+    const addImageBox = (src) => {
+        const id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`
+        imageBoxes.value.push({id, src})
     }
 
     onMounted(() => {

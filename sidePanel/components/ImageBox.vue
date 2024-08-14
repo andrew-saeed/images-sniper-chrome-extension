@@ -38,7 +38,6 @@
     }
 
     onMounted(() => {
-        const id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`
         cropperRef.value = new Cropper(imgRef.value, {
             aspectRatio: 16 / 9,
             responsive: false,
@@ -48,7 +47,7 @@
             imgHeight.value = `${imgRef.value.naturalHeight}px`
         })
         emit('addImageCropper', {
-            id, 
+            id: props.imageBox.id,
             cropperIns: cropperRef.value,
             imageName: getImageName()
         })
