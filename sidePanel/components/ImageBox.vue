@@ -39,7 +39,6 @@
 
     onMounted(() => {
         cropperRef.value = new Cropper(imgRef.value, {
-            aspectRatio: 16 / 9,
             responsive: false,
         })
         imgRef.value.addEventListener('ready', () => {

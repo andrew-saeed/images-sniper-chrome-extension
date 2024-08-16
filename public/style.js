@@ -1,5 +1,9 @@
 const CSS = `
 
+    div {
+        isolation: unset!important;
+    }
+
     #images-sniper-overlay {
         width: 100vw;
         height: 100vh;
@@ -19,19 +23,21 @@ const CSS = `
         border-radius: 0.3125rem;
     }
 
-    .image-sniper-btn {
+    .image-sniper-wrapper > img {
+        height: auto;
+    }
+
+    img.image-sniper-btn {
         position: absolute;
         bottom: 0.5rem;
         right: 0.5rem;
-        width: 3rem;
-        height: 3rem;
+        z-index: 99999;
+        width: 3rem!important;
+        height: 3rem!important;
         background-color: black;
         border: 0.3125rem white solid;
         border-radius: 3.125rem;
         cursor: pointer;
-    }
-    .image-sniper-btn img {
-        border-radius: 3.125rem;
     }
 `
 

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "image sniper",
-  "description": "snipe the images on the web page and download all of them as a zip file",
+  "name": "Images Sniper",
+  "description": "snipe the images on a web page, do some crop and download all",
   "version": "0.0.1",
   "action": {
     "default_title": "sniper mode",
@@ -10,7 +10,7 @@
   "side_panel": {
     "default_path": "sidePanel/index.html"
   },
-  "permissions": ["scripting", "activeTab", "tabs", "storage", "sidePanel"],
+  "permissions": ["scripting", "activeTab", "tabs", "sidePanel"],
   "host_permissions": [
     "http://*/*",
     "https://*/*"
