@@ -10,11 +10,7 @@
   "side_panel": {
     "default_path": "sidePanel/index.html"
   },
-  "permissions": ["scripting", "activeTab", "tabs", "sidePanel"],
-  "host_permissions": [
-    "http://*/*",
-    "https://*/*"
-  ],
+  "permissions": ["scripting", "activeTab", "sidePanel"],
   "background": {
     "service_worker": "main.js",
     "type": "module"
