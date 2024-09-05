@@ -5,6 +5,7 @@
 
     import ImageBox from './components/ImageBox.vue'
     import IconTextButton from './theme/IconTextButton.vue'
+    import Overlay from './theme/Overlay.vue'
 
     const imageCroppers = ref([])
     const addImageCropper = (imgCropper) => {
@@ -75,13 +76,16 @@
                 </IconTextButton>
             </h1>
         </header>
-        <ul class="mt-16 grid gap-[3.125rem]">
-            <ImageBox
-                @add-image-cropper="addImageCropper"
-                @remove-image-box="removeImageBox" 
-                v-for="imageBox in imageBoxes"
-                :imageBox="imageBox" 
-                :key="imageBox.id" />
-        </ul>
+        <main>
+            <ul class="mt-16 grid gap-[3.125rem]">
+                <ImageBox
+                    @add-image-cropper="addImageCropper"
+                    @remove-image-box="removeImageBox" 
+                    v-for="imageBox in imageBoxes"
+                    :imageBox="imageBox" 
+                    :key="imageBox.id" />
+            </ul>
+            <Overlay />
+        </main>
     </div>
 </template>
