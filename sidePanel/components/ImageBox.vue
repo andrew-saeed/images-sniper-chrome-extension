@@ -12,12 +12,13 @@
     const imgHeight = ref('')
     const cropperRef = ref(null)
 
-    const getImageName = () => {
-        const imageUrl = new URL(props.imageBox.src)
-        const segments = imageUrl.pathname.split('/')
-        const fileName = segments[segments.length - 1]
-
-        return fileName
+    const getImageName = (length = 10) => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        let result = ''
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length))
+        }
+        return `${result}.jpeg`
     }
 
     const download = () => {

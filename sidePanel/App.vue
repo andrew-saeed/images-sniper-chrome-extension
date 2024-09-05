@@ -54,7 +54,6 @@
         chrome.runtime.connect({name: "side-panel-toggle"})
 
         chrome.runtime.onMessage.addListener(async (request, sender, reply) => {
-        
             if(request.action === "img_shoot") addImageBox(request.src)
         })
     })
