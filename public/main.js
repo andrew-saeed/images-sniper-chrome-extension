@@ -103,16 +103,21 @@ chrome.action.onClicked.addListener(async (tab) => {
                         isFetch = true
 
                         await chrome.runtime.sendMessage({action: "fetch_start"})
-                        const imgRes = await fetch(img.src)
-                        const imgBlob = await imgRes.blob()
-                        const imgReader = new Promise((resolve, reject) => {
-                            const reader = new FileReader()
-                            reader.readAsDataURL(imgBlob)
-                            reader.onloadend = () => resolve(reader.result)
-                        })
-                        const imgSrcBase64 = await imgReader
 
-                        await chrome.runtime.sendMessage({action: "img_shoot", src: imgSrcBase64})
+                        try {
+                            const imgRes = await fetch(img.src)
+                            const imgBlob = await imgRes.blob()
+                            const imgReader = new Promise((resolve, reject) => {
+                                const reader = new FileReader()
+                                reader.readAsDataURL(imgBlob)
+                                reader.onloadend = () => resolve(reader.result)
+                            })
+                            const imgSrcBase64 = await imgReader
+    
+                            await chrome.runtime.sendMessage({action: "img_shoot", src: imgSrcBase64})
+                        } catch {
+                            await chrome.runtime.sendMessage({action: "img_shoot_error"})
+                        }
 
                         isFetch = false
                     })
