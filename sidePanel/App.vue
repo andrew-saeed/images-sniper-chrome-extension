@@ -1,43 +1,15 @@
 <script setup>
     import { ref, onMounted } from 'vue'
-    import { FolderArrowDownIcon } from '@heroicons/vue/24/solid'
-    import JSZip from 'jszip'
-
+    
     import ImageBox from './components/ImageBox.vue'
-    import IconTextButton from './theme/IconTextButton.vue'
+    import DownloadAllImagesBtn from './components/DownloadAllImagesBtn.vue'
     import Overlay from './theme/Overlay.vue'
 
     const imageCroppers = ref([])
     const addImageCropper = (imgCropper) => {
         imageCroppers.value.push(imgCropper)
     }
-    const downloadAllImages = async () => {
-        const zip = new JSZip()
-        const imagesBlobs = imageCroppers.value.map(cropper => {
-
-            return new Promise(resolve => {
-
-                cropper.cropperIns.getCroppedCanvas().toBlob( blob => {
-                    zip.file(`${cropper.id}-${cropper.imageName}`, blob)
-                    resolve()
-                })
-            })
-        })
-
-        await Promise.all(imagesBlobs)
-        
-        const zipFile = await zip.generateAsync({type: 'blob'})
-        const saveFileHandle = await window.showSaveFilePicker({
-            suggestedName: 'image-sniper.zip',
-            types: [{
-                description: 'zip-file',
-            }],
-        })
-        const writable = await saveFileHandle.createWritable()
-        await writable.write(zipFile)
-        await writable.close()
-    }
-
+    
     const imageBoxes = ref([])
     const removeImageBox = (id) => {
         const index = imageBoxes.value.findIndex(box => box.id === id)
@@ -65,15 +37,8 @@
             <h1 class="text-4xl text-white font-bold capitalize mb-3">
                 <div v-if="imageBoxes.length === 0">
                     empty
-                </div>
-                <IconTextButton v-else @click="downloadAllImages">
-                    <template #icon>
-                        <FolderArrowDownIcon class="size-6 text-black"/>
-                    </template>
-                    <template #text>
-                        download all images
-                    </template>
-                </IconTextButton>
+                </div>           
+                <DownloadAllImagesBtn :imageCroppers="imageCroppers" v-else />
             </h1>
         </header>
         <main>

@@ -1,7 +1,7 @@
 <script setup>
     import { ref, onMounted } from 'vue'
     import { Cog8ToothIcon } from '@heroicons/vue/24/solid'
-    
+
     const toggle = ref(false)
 
     onMounted(() => {
