@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Images Sniper",
-  "description": "snipe the images on a web page, do some crop and download all",
-  "version": "0.0.1",
+  "description": "Snipe the images on a web page, do some crop and download all",
+  "version": "0.1.0",
   "action": {
     "default_title": "sniper mode",
     "default_icon": "image_sniper_128.png"
